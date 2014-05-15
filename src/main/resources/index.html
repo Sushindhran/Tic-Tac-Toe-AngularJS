@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html ng-app="application">
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Tic Tac Toe</title>
+
+    <!-- Included CSS Files -->
+    <link rel="stylesheet" href="lib/foundation/test/stylesheets/normalize.css">
+    <link rel="stylesheet" href="lib/foundation/test/stylesheets/foundation.css">
+    <link rel="stylesheet" href="assets/style.css"/>
+
+
+    <script src="lib/foundation/js/vendor/custom.modernizr.js"></script>
+
+</head>
+<body>
+
+
+<!-- Header and Nav -->
+
+<div class="row">
+    <div class="large-3 columns">
+
+    </div>
+    <div class="large-9 columns">
+        <ul class="button-group right">
+            <li><a href="#/home" class="button">Home</a></li>
+            <li><a href="#/about" class="button">About</a></li>
+        </ul>
+    </div>
+</div>
+
+<div ng-view></div>
+
+
+<footer class="row">
+    <div class="large-12 columns">
+        <hr />
+        <div class="row">
+            <div class="large-5 columns">
+                <p>&copy; Copyright no one at all. Go to town.</p>
+            </div>
+            <div class="large-7 columns">
+                <ul class="inline-list right">
+                    <li><a href="#/home">Home</a></li>
+                    <li><a href="#/about">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="lib/lodash/lodash.compat.js"></script>
+<script src="lib/angular/angular.js"></script>
+<script src="lib/jquery/jquery.js"></script>
+<script src="lib/angular-route/angular-route.js"></script>
+
+<script src="lib/neosavvy-javascript-angular-core/neosavvy-javascript-angular-core.js"></script>
+<script src="lib/neosavvy-javascript-core/neosavvy-javascript-core.js"></script>
+
+<script src="application/application.js"></script>
+<script src="application/constants/configuration.js"></script>
+<script src="application/view/content/home-ctrl.js"></script>
+<script src="application/view/content/game-ctrl.js"></script>
+<script src="application/view/content/about-ctrl.js"></script>
+<script src="application/view/content/socket-ctrl.js"></script>
+
+
+<script src="lib/foundation/js/foundation/foundation.js"></script>
+<script>
+    $(document).foundation();
+</script>
+
+</body>
+</html>
+
