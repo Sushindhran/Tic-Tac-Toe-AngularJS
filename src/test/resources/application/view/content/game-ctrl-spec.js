@@ -7,8 +7,8 @@ describe("view.content.GameController", function () {
         inject(function ($injector) {
             $rootScope = $injector.get('$rootScope');
             $scope = $rootScope.$new();
+            gameService = $injector.get('services.GameService');
             controller = $injector.get('$controller')("view.content.GameController", {$scope: $scope});
-            $scope.state = {};
         });
     });
 
@@ -20,37 +20,39 @@ describe("view.content.GameController", function () {
 
     describe("GAME LOGIC FUNCTIONS",function(){
         it("Winner Player 0", function(){
-            $scope.state.board = ['X','O',' ','O','X',' ',' ',' ','X'];
-            var winner = controller.getWinner();
+            var state = {};
+            state.board = ['X','O',' ','O','X',' ',' ',' ','X'];
+            gameService.setState(state);
+            var winner = $scope.getWinner();
             expect(winner).toEqual('X');
         });
 
         it("Winner Player 1", function(){
-            $scope.state.board = ['X','X',' ','O','O','O',' ',' ','X'];
-            var winner = controller.getWinner();
+            var state = {};
+            state.board = ['X','X',' ','O','O','O',' ',' ','X'];
+            gameService.setState(state);
+            var winner = $scope.getWinner();
             expect(winner).toEqual("O");
         });
 
-       /* it("Is my move Player 0", function(){
-            $scope.state.board = ['X','X',' ','O','O',' ',' ',' ',' '];
-            var isMove = controller.isMyMove();
-            //configuration.yourPlayerIndex = 0;
+       it("Is my move Player 0", function(){
+            var state = {};
+            state.board = ['X','X',' ','O','O',' ',' ',' ',' '];
+            gameService.setState(state);
+            gameService.setYourPlayerIndex(0);
+            var isMove = $scope.isMyMove();
             expect(isMove).toEqual(true);
         });
 
         it("Is my move Player 1", function(){
-            $scope.state.board = ['X','X',' ','O','O',' ','X',' ',' '];
-            var isMove = controller.isMyMove();
-            //configuration.yourPlayerIndex = 1;
+            var state = {};
+            state.board = ['X','X',' ','O','O',' ','X',' ',' '];
+            gameService.setState(state);
+            gameService.setYourPlayerIndex(1);
+            var isMove = $scope.isMyMove();
             expect(isMove).toEqual(true);
-        });*/
+        });
 
-       /* it("Setting the state", function(){
-           var serverState = {"0":"X","3":"O","4":"O","8":"X"};
-           var board = ['X',' ',' ','O','O',' ',' ',' ','X'];
-           $rootScope.setState(serverState);
-           expect($scope.state.board).toEqual(board);
-        });*/
     });
 
 });

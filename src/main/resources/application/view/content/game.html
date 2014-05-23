@@ -1,21 +1,21 @@
-<div>
+<div ng-controller="view.content.GameController as ctrl">
     <div class="row">
         <div class="large-8 columns right">
             <h2>TIC TAC TOE</h2>
         </div>
     </div>
     <div class="row">
-        <div class="large-9 columns" ng-controller="view.content.SocketController as ctrl">
+        <div class="large-9 columns">
             <div class="row">
                 <div class="large-6 columns right">
                     <div id="status">{{socketStatus}}</div>
                     <ul class="button-group">
-                        <li><div class="button" ng-click="submitClick()">Connect to Server</div></li>
+                        <li><div class="button" ng-click="submitClick()">Click to play</div></li>
                     </ul>
                 </div>
             </div>
         </div>
-        <div class="large-12 columns right" id='display-area' ng-controller="view.content.GameController as ctrl">
+        <div class="large-12 columns right" id='display-area'>
             <div>{{displayText}}</div>
             <div  id='board'>
                 <div ng-repeat="r in gridRows">

@@ -15,6 +15,7 @@
 
     function initState() {
         state = { connections : [], gameReadyCount : 0};
+        state.gameState = {};
     }
 
     function send(source, message) {
@@ -24,6 +25,7 @@
 
     function sendGameState() {
         for (var i = 0; i < 2; i++) {
+            console.log(state.gameState.winner);
             var msg = {"type" : "UpdateUI", "state": state.gameState, "yourPlayerId" : ("" + i), "playersInfo" : [{"playerId": "0"}, {"playerId": "1"}]};
             console.log("Sending to player "+ i + " "+msg);
             send(state.connections[i], msg);
@@ -51,15 +53,19 @@
             if (state.gameReadyCount == 2) {
                 console.log("Two players have started the game");
                 // start game
-                state.gameState = {};
                 sendGameState();
             }
         } else if (type == "MakeMove") {
             var operations = JSON.parse(data).operations;
             for (var i = 0; i < operations.length; i++) {
                 var operation = operations[i];
-                if (operation.type = "Set") {
+                if (operation.type == "Set") {
                     state.gameState[operation.key] = operation.value;
+                }else if(operation.type=="EndGame"){
+                    if(operation.playerIdToScore[0] == 1)
+                        state.gameState.winner = 'X';
+                    else
+                        state.gameState.winner = 'O';
                 }
             }
             sendGameState();
